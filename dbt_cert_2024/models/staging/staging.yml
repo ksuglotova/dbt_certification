@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: zillow_raw
+    schema: zillow_data
+    tags: ['zillow']
+    description: A copy of Zillow data provided by NASDAQ
+    config:
+      enabled: true
+    
+    tables:
+    - name: zillow_data
+      description: Timeseries data of various metrics (indicators) split by regions
+      config:
+        tags: ['facts']
+    - name: zillow_indicators
+      description: Indicators' reference
+    - name: zillow_regions
+      description: Regions's reference
