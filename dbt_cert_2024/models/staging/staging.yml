@@ -9,11 +9,49 @@ sources:
       enabled: true
     
     tables:
+
     - name: zillow_data
-      description: Timeseries data of various metrics (indicators) split by regions
+      description: Timeseries data of various metrics (indicators) split by regions. For testing purposes assuming weekly data load.
+      freshness:
+        warn_after:
+          count: 7
+          period: day
+        error_after:
+          count: 8
+          period: day
       config:
         tags: ['facts']
+      columns:
+        - name: indicator_id
+          data_tests:
+            - not_null
+        - name: region_id
+          data_tests:
+            - not_null
+        - name: date
+          data_tests:
+            - not_null
+        - name: value
+          data_tests:
+            - not_null    
+
     - name: zillow_indicators
       description: Indicators' reference
+      columns:
+        - name: string_field_0
+          data_tests:
+            - unique
+            - not_null
+
     - name: zillow_regions
       description: Regions's reference
+      columns:
+        - name: region_id
+          data_tests:
+            - unique
+            - not_null
+        - name: region_type
+          data_tests:
+            - accepted_values:
+                values: ['zip', 'city', 'metro', 'neigh', 'state', 'county']
+      
