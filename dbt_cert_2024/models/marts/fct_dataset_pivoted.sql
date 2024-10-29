@@ -10,7 +10,7 @@
 -%}
 
 select
-  date_trunc(d.date, month) as report_month,
+  date_trunc(d.value_date, month) as report_month,
   {{ pivot_sum(
 		dim_column_name='d.indicator_id',
 		fact_column_name='d.value',

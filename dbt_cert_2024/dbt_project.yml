@@ -40,8 +40,17 @@ models:
     # Config indicated by + and applies to all files under models/example/
     staging:
       +schema: staging
+      +meta:
+        owner: data_eng@myorg.com
     marts:
       +materialized: table
+      +meta:
+        owner: analytics@myorg.com
+
+snapshots:
+  +unique_key: 'id'
+  +strategy: 'timestamp'
+  +target_schema: 'snapshots'
 
 data_tests:
 # Redundant flag because store_failures_as takes precedence if configured

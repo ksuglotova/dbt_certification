@@ -11,4 +11,4 @@ left join {{ ref('stg_zillow_indicators') }} i
   on i.string_field_0 = d.indicator_id
 left join {{ ref('stg_zillow_regions') }} r
   on r.region_id = d.region_id 
-where d.indicator_id = 'CRAM'  
+where d.indicator_id = 'Z4BR'  

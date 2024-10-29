@@ -7,7 +7,7 @@ def check_weekend(date_col):
 	
 def model(dbt, session):
 	
-    cram_dataset_with_holidays = dbt.ref("fct_cram_dataset")
+    cram_dataset_with_holidays = dbt.ref("fct_z4br_dataset")
 	
     df = cram_dataset_with_holidays.pandas_api()
     df["is_weekend"] = df["date"].apply(check_weekend)
