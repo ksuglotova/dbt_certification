@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_full_dataset
+    description: "{{ doc('fct_full_dataset') }}"
+    latest_version: 1
+    versions:
+      - v: 1
+    columns:
+      - name: indicator_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_zillow_indicators')
+              field:
+                string_field_0
+      - name: region_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_zillow_regions')
+              field:
+                region_id
+                
+  - name: fct_cram_dataset
+    description: "{{ doc('fct_cram_dataset') }}"
+    columns:
+      - name: indicator_id
+        data_tests:
+          - accepted_values:
+              values: ['CRAM']
+    
+
+  - name: python_test_model
+    config:
+      submission_method: serverless

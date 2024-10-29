@@ -1,0 +1,12 @@
+version: 2
+
+seeds:
+  - name: test_seed_record
+    description: A seed file with dummy records.
+    docs:
+      show: true
+      node_color: gold
+    config:
+      column_types:
+        updated: timestamp
+        
